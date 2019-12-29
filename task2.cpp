@@ -1,5 +1,4 @@
 #include <iostream>
-#include <array>
 
 inline void fill(int *M, const size_t &size, const int &seed)
 {
