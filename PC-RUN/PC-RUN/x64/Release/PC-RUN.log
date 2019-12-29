@@ -1,0 +1,29 @@
+﻿  PC-RUN.cpp
+C:\Projects\PC-RUN\PC-RUN\task2.h(8,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task2.h(8,22): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task2.h(9,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task2.h(9,22): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task2.h(37,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task2.h(37,22): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task2.h(38,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task2.h(38,22): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task5.h(16,79): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Projects\PC-RUN\PC-RUN\task5.h(57,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task5.h(57,31): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task5.h(64,26): warning C4806: '==': unsafe operation: no value of type 'const bool' promoted to type 'int' can equal the given constant
+C:\Projects\PC-RUN\PC-RUN\task5.h(77,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task5.h(77,31): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Projects\PC-RUN\PC-RUN\task5.h(85,26): warning C4806: '==': unsafe operation: no value of type 'const bool' promoted to type 'int' can equal the given constant
+C:\Projects\PC-RUN\PC-RUN\task5.h(109,57): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  Generating code
+C:\Projects\PC-RUN\PC-RUN\task2.h(33): warning C4715: 'multiplyP': not all control paths return a value
+C:\Projects\PC-RUN\PC-RUN\task2.h(123): warning C4715: 'task2': not all control paths return a value
+  9 of 38 functions (23.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  PC-RUN.vcxproj -> C:\Projects\PC-RUN\x64\Release\PC-RUN.exe

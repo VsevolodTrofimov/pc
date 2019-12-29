@@ -1,0 +1,6 @@
+﻿  PC-RUN.cpp
+C:\Projects\PC-RUN\PC-RUN\PC-RUN.cpp(42,26): warning C4018: '<': signed/unsigned mismatch
+C:\Projects\PC-RUN\PC-RUN\PC-RUN.cpp(63,26): warning C4806: '==': unsafe operation: no value of type 'const bool' promoted to type 'int' can equal the given constant
+C:\Projects\PC-RUN\PC-RUN\PC-RUN.cpp(84,26): warning C4806: '==': unsafe operation: no value of type 'const bool' promoted to type 'int' can equal the given constant
+C:\Projects\PC-RUN\PC-RUN\PC-RUN.cpp(108,57): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+  PC-RUN.vcxproj -> C:\Projects\PC-RUN\Debug\PC-RUN.exe
