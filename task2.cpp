@@ -1,4 +1,5 @@
 #include <iostream>
+#include <omp.h>
 
 inline void fill(int *M, const size_t &size, const int &seed)
 {
@@ -34,7 +35,7 @@ inline int multiplyP(int *A, int *B, int *C, const size_t &ah, const size_t &aw,
         throw "Matrix dimensions must agree";
     }
 
-#pragma omp parallel for
+#pragma omp parallel for shared(C) schedule(static)
     for (auto idx = 0; idx < size; ++idx)
     {
         const int y = idx / cw;
@@ -54,23 +55,25 @@ inline int multiply(int *A, int *B, int *C, const size_t &ah, const size_t &aw, 
 {
     const int cw = bw;
     const int ch = ah;
+    const int size = ch * cw;
 
     if (aw != bh)
     {
         throw "Matrix dimensions must agree";
     }
 
-    for (auto y = 0; y < ah; ++y)
+    for (auto idx = 0; idx < size; ++idx)
     {
-        for (auto x = 0; x < bw; ++x)
+        const int y = idx / cw;
+        const int x = idx % cw;
+
+        int sum = 0;
+        for (auto i = 0; i < bh; ++i)
         {
-            int sum = 0;
-            for (auto i = 0; i < bh; ++i)
-            {
-                sum += A[aw * y + i] * B[bw * i + x];
-            }
-            C[y * cw + x] = sum;
+            sum += A[aw * y + i] * B[bw * i + x];
         }
+
+        C[idx] = sum;
     }
 }
 
@@ -93,22 +96,44 @@ int main()
     const int m = 100;
     const int w = 6000;
 
-    const int ah = h;
-    const int aw = m;
-    const int bh = m;
-    const int bw = w;
+    srand(999);
+    const auto seed = rand();
+    clock_t begin, end;
 
-    auto A = new int[ah * aw];
-    auto B = new int[bh * bw];
-    fill(A, ah * aw, 40);
-    fill(B, bh * bw, 20);
+    double avgSeq = 0;
+    double avgPar = 0;
+    int res = 0;
+    for (auto i = 0; i < 100; ++i)
+    {
+        std::cout << "\r" << i + 1 << std::flush;
 
-    auto C = new int[h * w];
-    auto CP = new int[h * w];
-    multiply(A, B, C, ah, aw, bh, bw);
-    multiplyP(A, B, CP, ah, aw, bh, bw);
+        const int h = rand() % 300 + 300;
+        const int m = rand() % 300 + 300;
+        const int w = rand() % 300 + 300;
 
-    std::cout << equals(C, CP, h * w);
+        const int ah = h;
+        const int aw = m;
+        const int bh = m;
+        const int bw = w;
 
-    delete A, B, C, CP;
+        auto A = new int[ah * aw];
+        auto B = new int[bh * bw];
+        auto C = new int[h * w];
+        fill(A, ah * aw, rand());
+        fill(B, bh * bw, rand());
+
+        begin = clock();
+        res = multiplyP(A, B, C, ah, aw, bh, bw);
+        end = clock();
+        avgPar += (double)(end - begin);
+
+        begin = clock();
+        res = multiply(A, B, C, ah, aw, bh, bw);
+        end = clock();
+        avgSeq += (double)(end - begin);
+    }
+
+    std::cout << "\r"
+              << "S:" << avgSeq / 100 << "\n"
+              << "P:" << avgPar / 100 << std::endl;
 }
