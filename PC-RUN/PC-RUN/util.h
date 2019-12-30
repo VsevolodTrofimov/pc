@@ -8,7 +8,7 @@ inline void fill(int* M, const size_t& size, const int& seed)
 
     for (auto i = 0; i < size; ++i)
     {
-        M[i] = rand() % 1000000;
+        M[i] = rand() % 10;
     }
 }
 
